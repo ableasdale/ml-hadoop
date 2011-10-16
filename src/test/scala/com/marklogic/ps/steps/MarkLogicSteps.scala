@@ -12,12 +12,11 @@ import java.io.File
 
 case class MarkLogicXdbcClient(val uri: URI) {
   // Jersey uses java.util.logging - bridge to slf4  
-/*  val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("");
+  /*  val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("");
   var handlers = rootLogger.getHandlers()
   for (i <- 0 to handlers.length) {
     rootLogger.removeHandler(handlers(i))
   } */
-
 
   private val contentSource: ContentSource = ContentSourceFactory.newContentSource(uri)
 
@@ -94,7 +93,9 @@ trait MarkLogicSteps {
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-app-server.xqy")))
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-forests.xqy")))
-    executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
+    //executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
+    new com.marklogic.ps.XccHelper().clean
+
   }
 
   def loadSampleData() = {

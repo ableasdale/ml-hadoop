@@ -12,17 +12,17 @@ import org.slf4j.bridge.SLF4JBridgeHandler
 @RunWith(classOf[JUnitRunner])
 class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
 
-  
-  override def beforeAll() {
   val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.FINEST)
-  SLF4JBridgeHandler.install
+
+  override def beforeAll() {
+    SLF4JBridgeHandler.install
     setup("01_helloworld")
     //clearDatabase()
   }
 
   override def afterAll() {
     println("about to run after all")
-    
+
     //Thread.sleep(1000)
     teardown("01_helloworld")
     closeSession()
