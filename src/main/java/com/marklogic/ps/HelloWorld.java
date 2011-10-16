@@ -1,8 +1,7 @@
-package com.marklogic.ps;
-
 /*
  * Copyright (c) 2011 MarkLogic Corporation. All rights reserved.
  */
+package com.marklogic.ps;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -11,6 +11,7 @@ libraryDependencies ++= Seq(
   "commons-modeler" % "commons-modeler" % "2.0.1",  
   "commons-codec" % "commons-codec" % "1.5", 
   "commons-httpclient" % "commons-httpclient" % "3.1",
+  "commons-io" % "commons-io" % "2.1",
   "org.scalatest" % "scalatest_2.9.0" % "1.6.1",
   "com.codecommit" %% "anti-xml" % "0.2",
   "org.specs2" %% "specs2" % "1.6.1",

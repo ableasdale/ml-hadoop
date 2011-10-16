@@ -7,6 +7,9 @@ import com.marklogic.xcc.Request
 import com.marklogic.xcc.Session
 import com.marklogic.xcc.ResultSequence
 
+import org.apache.commons.io.FileUtils
+import java.io.File
+
 case class MarkLogicXdbcClient(val uri: URI) {
 
   private val contentSource: ContentSource = ContentSourceFactory.newContentSource(uri)
@@ -36,6 +39,10 @@ trait MarkLogicSteps {
   def executeQueryAndGetResultSequenceAsString(query: String): String = {
     mlSession.submitRequest(mlSession.newAdhocQuery(query)).asString()
   }
+  
+  def theResultFromTheGivenQuery(query: String): String = {
+    mlSession.submitRequest(mlSession.newAdhocQuery(query)).asString()
+  }
 
   def clearDatabase() {
     executeQuery("for $doc in doc() return xdmp:document-delete(xdmp:node-uri($doc))")
@@ -56,5 +63,24 @@ trait MarkLogicSteps {
   def insertDocument(xml: String, documentUri: String = math.random.toString) {
     executeQuery("xdmp:document-insert('/" + documentUri + ".xml', " + xml + ")")
   }
+  
+  def quickEstimate() : String = {
+    executeQueryAndGetResultSequenceAsString("xdmp:estimate(doc())")
+  }
+  
+  def loadSampleData() = {
+    FileUtils.copyDirectory(new File("src/main/resources/sample-data"), new File("/tmp/sample-data"))
+    print("Loading sample XML documents into MarkLogic ")
+    executeQuery(FileUtils.readFileToString(new File("src/main/resources/load-sample-data.xqy")))
+    while(quickEstimate != "93") {
+    	Thread.sleep(1000)
+    	print(". ")
+    }
+  }
+  
+  def cleanupSampleData() = {
+    FileUtils.deleteDirectory(new File("/tmp/sample-data"))
+  }
 
+  
 }
