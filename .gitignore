@@ -1,0 +1,8 @@
+.history
+.project
+.classpath
+.cache
+.target/
+
+project/target
+target/
