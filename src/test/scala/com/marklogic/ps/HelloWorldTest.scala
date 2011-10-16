@@ -7,6 +7,7 @@ import org.scalatest.junit.JUnitRunner
 import org.scalatest.GivenWhenThen
 import com.marklogic.ps.steps.MarkLogicSteps
 import org.scalatest.BeforeAndAfterAll
+import org.slf4j.bridge.SLF4JBridgeHandler
 
 @RunWith(classOf[JUnitRunner])
 class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
