@@ -8,6 +8,7 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "0.9.30",
   "commons-logging" % "commons-logging" % "1.1.1" % "provided",
   "org.slf4j" % "jcl-over-slf4j" % "1.6.2", 
+  "org.slf4j" % "jul-to-slf4j" % "1.6.2",
   "commons-modeler" % "commons-modeler" % "2.0.1",  
   "commons-codec" % "commons-codec" % "1.5", 
   "commons-httpclient" % "commons-httpclient" % "3.1",

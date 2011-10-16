@@ -19,8 +19,9 @@ class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers wi
   }
 
   override def afterAll() {
-    cleanupSampleData()
     closeSession()
+    cleanupSampleData()
+    //teardownDatabase()
   }
 
   describe("The LinkCountInDoc sample class") {
@@ -30,7 +31,7 @@ class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers wi
       // set up in the beforeAll method
       when("the Map Reduce job is executed against the database")
       new LinkCountInDoc().executeMapReduce()
-      then("the result should be match the reference string held by this test")
+      then("the result should match the reference string held by this test")
       theResultFromTheGivenQuery(referencesQuery) should be("enwiki/Ayn Rand 1\nenwiki/List of characters in Atlas Shrugged 4\nenwiki/Academy Award for Best Art Direction 1\nenwiki/Academy Award 2\nenwiki/Aristotle 5")
     }
   }

@@ -6,17 +6,24 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.GivenWhenThen
 import com.marklogic.ps.steps.MarkLogicSteps
-import org.scalatest.BeforeAndAfterEach
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
+class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
 
-  override def beforeEach() {
-    clearDatabase()
+  
+  override def beforeAll() {
+  val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.FINEST)
+  SLF4JBridgeHandler.install
+    setup("01_helloworld")
+    //clearDatabase()
   }
 
   override def afterAll() {
+    println("about to run after all")
+    
+    //Thread.sleep(1000)
+    teardown("01_helloworld")
     closeSession()
   }
 
@@ -27,6 +34,7 @@ class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with G
       when("the Map Reduce job is executed against the database")
       new HelloWorld().executeMapReduce()
       then("the result should be available as a single text file in the database")
+      println(markLogicDocByUri("HelloWorld.txt"))
       markLogicDocByUri("HelloWorld.txt") should be("hello world")
     }
   }

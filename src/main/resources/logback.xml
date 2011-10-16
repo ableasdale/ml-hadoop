@@ -6,6 +6,7 @@
 		</encoder>
 	</appender>
 
+	<logger name="com.marklogic" level="FINEST" />
 	<logger name="org.apache" level="WARN" />
 	<logger name="ch.qos.logback" level="WARN" />
 
