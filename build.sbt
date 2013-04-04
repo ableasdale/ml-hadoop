@@ -14,6 +14,8 @@ libraryDependencies ++= Seq(
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "commons-io" % "commons-io" % "2.1",
   "org.scalatest" % "scalatest_2.10" % "1.9.1",
+  "com.marklogic" % "marklogic-xcc" % "5.0.5",
+  "com.marklogic" % "marklogic-mapreduce" % "1.1.2",
   //"com.codecommit" %% "anti-xml" % "0.3",
   "org.specs2" %% "specs2" % "1.14" % "test",
   // "org.specs2" %% "specs2-scalaz-core" % "6.0.1" % "test",
@@ -23,8 +25,5 @@ libraryDependencies ++= Seq(
 )
 
 resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-                    "releases"  at "http://oss.sonatype.org/content/repositories/releases")
-
-unmanagedBase <<= baseDirectory { base => base / "unmanaged_libs" }
-
-unmanagedJars in Compile <<= baseDirectory map { base => (base ** "*.jar").classpath }
+                    "releases"  at "http://oss.sonatype.org/content/repositories/releases",
+                    "MarkLogic" at "http://developer.marklogic.com/maven2")

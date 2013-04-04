@@ -1,1 +1,1 @@
-java -Xmx512M -jar "bin/sbt-launch.jar" %*
+java -Xmx2048M -jar "bin/sbt-launch.jar" %*
