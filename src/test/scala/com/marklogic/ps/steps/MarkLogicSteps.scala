@@ -35,7 +35,7 @@ case class MarkLogicXdbcClient(val uri: URI) {
 
 trait MarkLogicSteps {
   val XDBC_ADM_URI = "xcc://admin:admin@localhost:8010"
-  val XDBC_URI = "xcc://admin:admin@localhost:8010"
+  val XDBC_URI = "xcc://admin:admin@localhost:9001"
 
   val markLogicXdbcAdminClient = new MarkLogicXdbcClient(new URI(XDBC_ADM_URI))
   val markLogicXdbcClient = new MarkLogicXdbcClient(new URI(XDBC_URI))
@@ -91,8 +91,11 @@ trait MarkLogicSteps {
 
   def teardown(foldername: String) {
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
+    println("first part of teardown")
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-app-server.xqy")))
+    println("second part of teardown")
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-forests.xqy")))
+    println("third part of teardown")
     //executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
     new com.marklogic.ps.XccHelper().clean
 
