@@ -94,10 +94,11 @@ trait MarkLogicSteps {
     println("first part of teardown")
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-app-server.xqy")))
     println("second part of teardown")
-    executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-forests.xqy")))
-    println("third part of teardown")
+    executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
+    println("teardown done")
     //executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
-    new com.marklogic.ps.XccHelper().clean
+   // This can be removed
+   // new com.marklogic.ps.XccHelper().clean
 
   }
 

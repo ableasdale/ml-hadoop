@@ -1,5 +1,6 @@
 xquery version "1.0-ml"; 
 
-import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic/admin.xqy";
+import module namespace info = "http://marklogic.com/appservices/infostudio"
+    at "/MarkLogic/appservices/infostudio/info.xqy";
 
-admin:save-configuration(admin:database-delete(admin:get-configuration(), xdmp:database("hello-hadoop")))
+info:database-delete("hello-hadoop")
