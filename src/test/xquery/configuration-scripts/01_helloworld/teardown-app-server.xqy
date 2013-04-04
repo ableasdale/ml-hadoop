@@ -11,4 +11,4 @@ let $config := admin:appserver-delete(
     admin:appserver-get-id($config, admin:group-get-id($config, "Default"), $appserver)
 )
 return
-admin:save-configuration($config)
+admin:save-configuration-without-restart($config)
