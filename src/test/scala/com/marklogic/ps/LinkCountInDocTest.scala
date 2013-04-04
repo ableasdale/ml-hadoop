@@ -13,7 +13,7 @@ import org.scalatest.BeforeAndAfterAll
 class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
   override def beforeAll() {
-    // setup infrastructure
+    setup("02_linkcountindoc")
     clearDatabase()
     loadSampleData()
   }
@@ -21,12 +21,11 @@ class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers wi
   override def afterAll() {
     closeSession()
     cleanupSampleData()
-    //teardownDatabase()
+    teardown("02_linkcountindoc")
   }
 
   describe("The LinkCountInDoc sample class") {
-    // setup isn't working right now...
-    ignore("should exercise the LinkCountInDoc Hadoop Connector Example") {
+    it("should exercise the LinkCountInDoc Hadoop Connector Example") {
       val referencesQuery = "for $ref in //ref-count\nreturn fn:concat(xdmp:node-uri($ref),' ',$ref/text())";
       given("MarkLogic contains the sample XML documents required for this example")
       // set up in the beforeAll method
