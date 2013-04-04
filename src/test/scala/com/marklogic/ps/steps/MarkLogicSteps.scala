@@ -34,8 +34,8 @@ case class MarkLogicXdbcClient(val uri: URI) {
 }
 
 trait MarkLogicSteps {
-  val XDBC_ADM_URI = "xcc://admin:admin@localhost:9999"
-  val XDBC_URI = "xcc://admin:admin@localhost:9001"
+  val XDBC_ADM_URI = "xcc://admin:admin@localhost:8010"
+  val XDBC_URI = "xcc://admin:admin@localhost:8010"
 
   val markLogicXdbcAdminClient = new MarkLogicXdbcClient(new URI(XDBC_ADM_URI))
   val markLogicXdbcClient = new MarkLogicXdbcClient(new URI(XDBC_URI))
