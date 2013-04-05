@@ -77,14 +77,11 @@ public class LinkCountInDoc {
                 result = new MarkLogicNode(element);
                 baseUri = context.getConfiguration().get(BASE_URI_PARAM_NAME);
             } catch (ParserConfigurationException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                LOG.error(e.getMessage());
             } catch (SAXException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                LOG.error(e.getMessage());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                LOG.error(e.getMessage());
             }
         }
         

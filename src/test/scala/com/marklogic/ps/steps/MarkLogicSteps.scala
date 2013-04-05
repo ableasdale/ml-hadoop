@@ -28,6 +28,7 @@ trait MarkLogicSteps {
 
   def LOG = LoggerFactory.getLogger("MarkLogicSteps")
 
+  // TODO - configure these from the XML files on each test
   val XDBC_ADM_URI = "xcc://admin:admin@localhost:8010"
   val XDBC_URI = "xcc://admin:admin@localhost:9001"
 
