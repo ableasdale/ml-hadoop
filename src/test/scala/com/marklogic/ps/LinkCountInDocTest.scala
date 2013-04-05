@@ -10,6 +10,7 @@ import com.marklogic.ps.steps.MarkLogicSteps
 class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
   override def beforeAll() {
+    println("LinkCountInDocTest :: about to run 'before all'")
     setup("02_linkcountindoc")
     clearDatabase()
     loadSampleData()

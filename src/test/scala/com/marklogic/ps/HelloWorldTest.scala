@@ -13,6 +13,7 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
   val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.FINEST)
 
   override def beforeAll() {
+    println("HelloWorld Test :: about to run 'before all'")
     SLF4JBridgeHandler.install
     setup("01_helloworld")
     //clearDatabase()
