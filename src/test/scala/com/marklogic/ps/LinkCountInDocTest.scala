@@ -5,20 +5,22 @@ import org.scalatest._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import com.marklogic.ps.steps.MarkLogicSteps
+import org.slf4j.LoggerFactory
 
 @RunWith(classOf[JUnitRunner])
 class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
+  def LOG = LoggerFactory.getLogger("LinkCountInDocTest")
+
   override def beforeAll() {
-    println("LinkCountInDocTest :: about to run 'before all'")
+    LOG.info("About to run 'beforeAll()' setup")
     setup("02_linkcountindoc")
     Thread.sleep(5000)
     loadSampleData()
   }
 
   override def afterAll() {
-    println("LinkCountInDocTest :: about to run 'after all'")
-    // TODO - replace all printlns with logback
+    LOG.info("About to run 'afterAll()' teardown")
     teardown("02_linkcountindoc")
     closeSession()
     cleanupSampleData()

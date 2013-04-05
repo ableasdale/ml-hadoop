@@ -8,6 +8,7 @@ import com.marklogic.xcc.Session
 
 import org.apache.commons.io.FileUtils
 import java.io.File
+import org.slf4j.LoggerFactory
 
 case class MarkLogicXdbcClient(uri: URI) {
 
@@ -24,6 +25,9 @@ case class MarkLogicXdbcClient(uri: URI) {
 }
 
 trait MarkLogicSteps {
+
+  def LOG = LoggerFactory.getLogger("MarkLogicSteps")
+
   val XDBC_ADM_URI = "xcc://admin:admin@localhost:8010"
   val XDBC_URI = "xcc://admin:admin@localhost:9001"
 
@@ -69,7 +73,7 @@ trait MarkLogicSteps {
   }
 
   def insertDocument(xml: String, documentUri: String = math.random.toString) {
-    println("trying to insert: "+xml)
+    LOG.debug("Trying to insert content: " + xml)
     executeQuery("xdmp:document-insert('/" + documentUri + ".xml', " + xml + ")")
   }
 
@@ -78,7 +82,7 @@ trait MarkLogicSteps {
   }
 
   def setup(foldername: String) {
-    println("MarkLogicSteps:: Setup :: in setup for " + foldername)
+    LOG.debug("Setup :: in setup for: " + foldername)
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/setup.xqy")))
     mlAdmSession.close()
@@ -86,15 +90,11 @@ trait MarkLogicSteps {
 
   def teardown(foldername: String) {
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
-    println("first part of teardown")
+    LOG.debug("First part of Test Teardown")
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-app-server.xqy")))
-    println("second part of teardown")
+    LOG.debug("Second part of Test Teardown")
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
-    println("teardown done")
-    //executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/teardown-db.xqy")))
-   // This can be removed
-   // new com.marklogic.ps.XccHelper().clean
-
+    LOG.debug("Teardown Complete")
   }
 
   def loadSampleData() {
