@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
-<!-- Used with com.marklogic.mapreduce.examples.HelloWorld.class -->
-
 <configuration>
     <property>
         <name>mapreduce.marklogic.input.username</name>
@@ -21,10 +19,6 @@
         <value>9001</value>
     </property>
     <property>
-    	<name>mapreduce.marklogic.input.mode</name>
-    	<value>basic</value>
-    </property>
-    <property>
         <name>mapreduce.marklogic.output.username</name>
         <value>admin</value>
     </property>
@@ -39,9 +33,5 @@
     <property>
         <name>mapreduce.marklogic.output.port</name>
         <value>9001</value>
-    </property>
-    <property>
-        <name>mapreduce.marklogic.output.content.type</name>
-        <value>TEXT</value>
     </property>
 </configuration>

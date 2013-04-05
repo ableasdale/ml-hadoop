@@ -5,6 +5,7 @@ version := "1.0"
 scalaVersion := "2.10.1"
 
 libraryDependencies ++= Seq(
+  "org.slf4j" % "slf4j-api" % "1.7.3",
   "ch.qos.logback" % "logback-classic" % "1.0.10",
   "org.scalatest" % "scalatest_2.10" % "1.9.1",
   "com.marklogic" % "marklogic-xcc" % "5.0.5",
