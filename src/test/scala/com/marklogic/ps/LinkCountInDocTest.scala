@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 @RunWith(classOf[JUnitRunner])
 class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
-  def LOG = LoggerFactory.getLogger("LinkCountInDocTest")
+  override def LOG = LoggerFactory.getLogger("LinkCountInDocTest")
 
   override def beforeAll() {
     LOG.info("About to run 'beforeAll()' setup")

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 @RunWith(classOf[JUnitRunner])
 class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
 
-  def LOG = LoggerFactory.getLogger("HelloWorldTest")
+  override def LOG = LoggerFactory.getLogger("HelloWorldTest")
 
   override def beforeAll() {
     LOG.info("About to run 'beforeAll()' setup")
