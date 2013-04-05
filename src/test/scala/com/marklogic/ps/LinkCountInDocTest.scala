@@ -2,12 +2,9 @@ package com.marklogic.ps
 
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import com.marklogic.ps.steps.MarkLogicSteps
 import org.slf4j.LoggerFactory
 
-@RunWith(classOf[JUnitRunner])
 class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
   override def LOG = LoggerFactory.getLogger("LinkCountInDocTest")

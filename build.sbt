@@ -13,7 +13,6 @@ libraryDependencies ++= Seq(
   "commons-modeler" % "commons-modeler" % "2.0.1",
   "commons-io" % "commons-io" % "2.4",
   "org.specs2" %% "specs2" % "1.14" % "test",
-  "junit" % "junit" % "4.11",
   "org.apache.hadoop" % "hadoop-core" % "1.1.2"
 )
 
