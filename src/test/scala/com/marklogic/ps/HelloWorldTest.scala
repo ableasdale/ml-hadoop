@@ -1,16 +1,14 @@
 package com.marklogic.ps
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.Spec
+import org.scalatest.{FunSpec, GivenWhenThen, BeforeAndAfterAll}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.GivenWhenThen
 import com.marklogic.ps.steps.MarkLogicSteps
-import org.scalatest.BeforeAndAfterAll
 import org.slf4j.bridge.SLF4JBridgeHandler
 
 @RunWith(classOf[JUnitRunner])
-class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
+class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
 
   val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.FINEST)
 
@@ -21,9 +19,10 @@ class HelloWorldTest extends Spec with MarkLogicSteps with ShouldMatchers with G
   }
 
   override def afterAll() {
-    println("about to run after all")
+    println("HelloWorld Test :: about to run 'after all'")
 
-    //Thread.sleep(1000)
+    // Until properly fixed
+    //Thread.sleep(9000)
     teardown("01_helloworld")
     closeSession()
   }

@@ -1,16 +1,13 @@
 package com.marklogic.ps
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.Spec
+import org.scalatest._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.GivenWhenThen
 import com.marklogic.ps.steps.MarkLogicSteps
-import org.scalatest.BeforeAndAfterEach
-import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
+class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterEach with BeforeAndAfterAll {
 
   override def beforeAll() {
     setup("02_linkcountindoc")
@@ -19,9 +16,11 @@ class LinkCountInDocTest extends Spec with MarkLogicSteps with ShouldMatchers wi
   }
 
   override def afterAll() {
+    // TODO - replace all printlns with logback
+    println("LinkCountInDocTest :: about to run 'after all'")
+    teardown("02_linkcountindoc")
     closeSession()
     cleanupSampleData()
-    teardown("02_linkcountindoc")
   }
 
   describe("The LinkCountInDoc sample class") {
