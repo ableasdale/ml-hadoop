@@ -13,7 +13,7 @@ libraryDependencies ++= Seq(
   "commons-modeler" % "commons-modeler" % "2.0.1",
   "org.specs2" %% "specs2" % "1.14" % "test",
   "junit" % "junit" % "4.11",
-  "org.apache.hadoop" % "hadoop-core" % "1.1.2"
+  "org.apache.hadoop" % "hadoop-core" % "1.0.3"
 )
 
 resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
