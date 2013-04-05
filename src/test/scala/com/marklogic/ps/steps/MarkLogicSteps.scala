@@ -89,6 +89,7 @@ trait MarkLogicSteps {
   }
 
   def setup(foldername: String) {
+    println("MarkLogicSteps:: Setup :: in setup for " + foldername)
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/setup.xqy")))
     mlAdmSession.close
