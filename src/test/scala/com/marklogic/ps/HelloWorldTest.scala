@@ -26,11 +26,12 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
 
   describe("The HelloWorld sample class") {
     it("should exercise the HelloWorld Hadoop Connector Example") {
-      given("MarkLogic contains the two XML documents required for this example")
+      Given("MarkLogic contains the two XML documents required for this example")
+      Thread.sleep(5000)
       markLogicHas("<data><child>hello x</child></data>", "<data><child>world y</child></data>");
-      when("the Map Reduce job is executed against the database")
+      When("the Map Reduce job is executed against the database")
       new HelloWorld().executeMapReduce()
-      then("the result should be available as a single text file in the database")
+      Then("the result should be available as a single text file in the database")
       println(markLogicDocByUri("HelloWorld.txt"))
       markLogicDocByUri("HelloWorld.txt") should be("hello world")
     }

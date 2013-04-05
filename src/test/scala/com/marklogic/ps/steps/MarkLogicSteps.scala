@@ -81,6 +81,7 @@ trait MarkLogicSteps {
   }
 
   def insertDocument(xml: String, documentUri: String = math.random.toString) {
+    println("trying to insert: "+xml)
     executeQuery("xdmp:document-insert('/" + documentUri + ".xml', " + xml + ")")
   }
 
