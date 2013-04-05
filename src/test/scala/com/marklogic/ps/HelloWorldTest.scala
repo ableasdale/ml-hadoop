@@ -16,10 +16,8 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
   }
 
   override def afterAll() {
-    println("HelloWorld Test :: about to run 'after all - currently doing nothing'")
-
-    // Until properly fixed
-    //Thread.sleep(120000)
+    println("HelloWorld Test :: about to run 'after all - currently not closing session'")
+    Thread.sleep(5000)
     teardown("01_helloworld")
     //closeSession()
   }
