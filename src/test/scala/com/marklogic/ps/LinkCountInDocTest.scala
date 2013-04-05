@@ -18,7 +18,7 @@ class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers
 
   override def afterAll() {
 
-    Thread.sleep(10000) // let the reducer complete first!
+    Thread.sleep(120000) // let the reducer complete first!
     // TODO - replace all printlns with logback
     println("LinkCountInDocTest :: about to run 'after all'")
     teardown("02_linkcountindoc")
