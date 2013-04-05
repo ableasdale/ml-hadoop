@@ -12,6 +12,7 @@ class LinkCountInDocTest extends FunSpec with MarkLogicSteps with ShouldMatchers
   override def beforeAll() {
     println("LinkCountInDocTest :: about to run 'before all'")
     setup("02_linkcountindoc")
+    Thread.sleep(5000)
     loadSampleData()
   }
 
