@@ -7,8 +7,8 @@ scalaVersion := "2.10.1"
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.0.10",
   "commons-logging" % "commons-logging" % "1.1.1" % "provided",
-  "org.slf4j" % "jcl-over-slf4j" % "1.7.3", 
-  "org.slf4j" % "jul-to-slf4j" % "1.7.3",
+  //"org.slf4j" % "jcl-over-slf4j" % "1.7.3",
+  //"org.slf4j" % "jul-to-slf4j" % "1.7.3",
   "commons-modeler" % "commons-modeler" % "2.0.1",  
   "commons-codec" % "commons-codec" % "1.7", 
   "commons-httpclient" % "commons-httpclient" % "3.1",

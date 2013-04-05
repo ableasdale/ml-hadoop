@@ -5,16 +5,12 @@ import org.scalatest.{FunSpec, GivenWhenThen, BeforeAndAfterAll}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import com.marklogic.ps.steps.MarkLogicSteps
-import org.slf4j.bridge.SLF4JBridgeHandler
 
 @RunWith(classOf[JUnitRunner])
 class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers with GivenWhenThen with BeforeAndAfterAll {
 
-  val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.FINEST)
-
   override def beforeAll() {
     println("HelloWorld Test :: about to run 'before all'")
-    //SLF4JBridgeHandler.install
     setup("01_helloworld")
     //clearDatabase()
   }

@@ -10,7 +10,7 @@ declare variable $db := "hello-hadoop";
 declare variable $config := admin:get-configuration();
     
 (info:database-create($db),
-let $_ := xdmp:log("hello world test setup)
+let $_ := xdmp:log("hello world test setup")
 let $config := admin:xdbc-server-create(
        admin:get-configuration(), 
        admin:group-get-id($config, "Default"), 
