@@ -4,6 +4,7 @@ import java.net.URI
 import com.marklogic.xcc.ContentSource
 import com.marklogic.xcc.ContentSourceFactory
 import com.marklogic.xcc.Request
+import com.marklogic.xcc.RequestOptions
 import com.marklogic.xcc.Session
 import com.marklogic.xcc.ResultSequence
 
@@ -43,6 +44,10 @@ trait MarkLogicSteps {
   lazy val mlSession = markLogicXdbcClient.newSession()
 
   private def executeAdmQuery(session: Session, query: String) {
+    val ro = new RequestOptions()
+    ro.setMaxAutoRetry(10)
+    ro.setAutoRetryDelayMillis(1000);
+    session.setDefaultRequestOptions(ro)
     session.getLogger().setLevel(java.util.logging.Level.FINEST)
     session.submitRequest(session.newAdhocQuery(query))
   }
