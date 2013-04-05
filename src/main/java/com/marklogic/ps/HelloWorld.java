@@ -111,7 +111,6 @@ public class HelloWorld {
 		LOG.info("Starting MapReduce Job");
 		try {
 			Configuration conf = new Configuration();
-			conf.addResource(new Path("src/main/resources/marklogic-hello-world.xml"));
 			
 			Job job = new Job(conf);
 			job.setJarByClass(HelloWorld.class);
@@ -129,23 +128,8 @@ public class HelloWorld {
 			job.setOutputValueClass(Text.class);
 
 			conf = job.getConfiguration();
-			/*
-			// input
-			conf.set("mapreduce.marklogic.input.username", "admin");
-			conf.set("mapreduce.marklogic.input.password", "admin");
-			conf.set("mapreduce.marklogic.input.host", "localhost");
-			conf.set("mapreduce.marklogic.input.port", "9001");
-			conf.set("mapreduce.marklogic.input.mode", "basic");
-			// outputs
-			conf.set("mapreduce.marklogic.output.username", "admin");
-			conf.set("mapreduce.marklogic.output.password", "admin");
-			conf.set("mapreduce.marklogic.output.host", "localhost");
-			conf.set("mapreduce.marklogic.output.port", "9001");
-			conf.set("mapreduce.marklogic.output.content.type", "TEXT"); 
-*/
-			//String[] otherArgs = new GenericOptionsParser(
-			//new GenericOptionsParser(conf, args).getRemainingArgs();
-			
+            conf.addResource(new Path("src/main/resources/marklogic-hello-world.xml"));
+
 			job.waitForCompletion(true);
 			
 		} catch (IOException e) {
