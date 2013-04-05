@@ -3,9 +3,9 @@
  */
 package com.marklogic.ps;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringBufferInputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,7 +18,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.util.GenericOptionsParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Attr;
@@ -73,7 +72,7 @@ public class LinkCountInDoc {
             try {
                 DocumentBuilder docBuilder = 
                     DocumentBuilderFactory.newInstance().newDocumentBuilder();
-                InputStream sbis = new StringBufferInputStream(TEMPLATE);
+                InputStream sbis = new ByteArrayInputStream(TEMPLATE.getBytes("UTF-8") );
                 element = docBuilder.parse(sbis).getDocumentElement();
                 result = new MarkLogicNode(element);
                 baseUri = context.getConfiguration().get(BASE_URI_PARAM_NAME);

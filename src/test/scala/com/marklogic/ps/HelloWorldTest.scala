@@ -19,7 +19,7 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
     println("HelloWorld Test :: about to run 'after all'")
 
     // Until properly fixed
-    //Thread.sleep(9000)
+    Thread.sleep(2000)
     teardown("01_helloworld")
     closeSession()
   }
