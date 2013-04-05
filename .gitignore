@@ -3,6 +3,9 @@
 .classpath
 .cache
 .target/
+.idea/
+.idea_modules/
 
 project/target
 target/
+out/
