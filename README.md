@@ -1,6 +1,7 @@
-To generate project files:
+To generate the necessary IDE project files
+-------------------------------------------
 
 Run sbt, then:
 
-eclipse     (Eclipse)
-gen-idea    (IntelliJ)
+* eclipse     (Eclipse)
+* gen-idea    (IntelliJ)
