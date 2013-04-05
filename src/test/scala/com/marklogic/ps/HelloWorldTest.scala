@@ -19,7 +19,7 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
     println("HelloWorld Test :: about to run 'after all - currently doing nothing'")
 
     // Until properly fixed
-    Thread.sleep(120000)
+    //Thread.sleep(120000)
     teardown("01_helloworld")
     //closeSession()
   }
@@ -28,7 +28,7 @@ class HelloWorldTest extends FunSpec with MarkLogicSteps with ShouldMatchers wit
     it("should exercise the HelloWorld Hadoop Connector Example") {
       Given("MarkLogic contains the two XML documents required for this example")
       Thread.sleep(5000)
-      markLogicHas("<data><child>hello x</child></data>", "<data><child>world y</child></data>");
+      markLogicHas("<data><child>hello x</child></data>", "<data><child>world y</child></data>")
       When("the Map Reduce job is executed against the database")
       new HelloWorld().executeMapReduce()
       Then("the result should be available as a single text file in the database")

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.marklogic.mapreduce.*;
 import org.w3c.dom.Document;
 
 import org.slf4j.Logger;
@@ -19,11 +20,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-
-import com.marklogic.mapreduce.ContentOutputFormat;
-import com.marklogic.mapreduce.DocumentInputFormat;
-import com.marklogic.mapreduce.DocumentURI;
-import com.marklogic.mapreduce.MarkLogicNode;
 
 /**
  * Read the first word from each word in the input documents, then produce a
@@ -116,7 +112,7 @@ public class HelloWorld {
 			job.setJarByClass(HelloWorld.class);
 
 			// Map related configuration
-			job.setInputFormatClass(DocumentInputFormat.class);
+			job.setInputFormatClass(NodeInputFormat.class);
 			job.setMapperClass(MyMapper.class);
 			job.setMapOutputKeyClass(IntWritable.class);
 			job.setMapOutputValueClass(Text.class);

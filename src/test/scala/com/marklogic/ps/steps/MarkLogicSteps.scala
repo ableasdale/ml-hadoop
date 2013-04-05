@@ -3,21 +3,13 @@ package com.marklogic.ps.steps
 import java.net.URI
 import com.marklogic.xcc.ContentSource
 import com.marklogic.xcc.ContentSourceFactory
-import com.marklogic.xcc.Request
 import com.marklogic.xcc.RequestOptions
 import com.marklogic.xcc.Session
-import com.marklogic.xcc.ResultSequence
 
 import org.apache.commons.io.FileUtils
 import java.io.File
 
-case class MarkLogicXdbcClient(val uri: URI) {
-  // Jersey uses java.util.logging - bridge to slf4  
-  /*  val rootLogger = java.util.logging.LogManager.getLogManager().getLogger("");
-  var handlers = rootLogger.getHandlers()
-  for (i <- 0 to handlers.length) {
-    rootLogger.removeHandler(handlers(i))
-  } */
+case class MarkLogicXdbcClient(uri: URI) {
 
   private val contentSource: ContentSource = ContentSourceFactory.newContentSource(uri)
 
@@ -29,9 +21,6 @@ case class MarkLogicXdbcClient(val uri: URI) {
 
   def newSession() = contentSource.newSession()
 
-  //  private def fromClassPath(fileName: String): String = {
-  //    io.Source.fromInputStream(classOf[MarkLogicXdbcClient].getClassLoader().getResourceAsStream(fileName)).mkString
-  //  }
 }
 
 trait MarkLogicSteps {
@@ -46,9 +35,8 @@ trait MarkLogicSteps {
   private def executeAdmQuery(session: Session, query: String) {
     val ro = new RequestOptions()
     ro.setMaxAutoRetry(10)
-    ro.setAutoRetryDelayMillis(1000);
+    ro.setAutoRetryDelayMillis(1000)
     session.setDefaultRequestOptions(ro)
-    session.getLogger().setLevel(java.util.logging.Level.FINEST)
     session.submitRequest(session.newAdhocQuery(query))
   }
 
@@ -72,7 +60,7 @@ trait MarkLogicSteps {
     mlSession.close()
   }
 
-  def markLogicHas(xmlDocs: String*) = {
+  def markLogicHas(xmlDocs: String*) {
     xmlDocs.foreach(xml => insertDocument(xml))
   }
 
@@ -93,7 +81,7 @@ trait MarkLogicSteps {
     println("MarkLogicSteps:: Setup :: in setup for " + foldername)
     val mlAdmSession = markLogicXdbcAdminClient.newSession()
     executeAdmQuery(mlAdmSession, FileUtils.readFileToString(new File("src/test/xquery/configuration-scripts/" + foldername + "/setup.xqy")))
-    mlAdmSession.close
+    mlAdmSession.close()
   }
 
   def teardown(foldername: String) {
@@ -109,7 +97,7 @@ trait MarkLogicSteps {
 
   }
 
-  def loadSampleData() = {
+  def loadSampleData() {
     FileUtils.copyDirectory(new File("src/main/resources/sample-data"), new File("/tmp/sample-data"))
     print("Loading sample XML documents into MarkLogic ")
     executeQuery(FileUtils.readFileToString(new File("src/main/resources/load-sample-data.xqy")))
@@ -119,8 +107,7 @@ trait MarkLogicSteps {
     }
   }
 
-  def cleanupSampleData() = {
+  def cleanupSampleData() {
     FileUtils.deleteDirectory(new File("/tmp/sample-data"))
   }
-
 }
